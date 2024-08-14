@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="069-DC-AXV">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="HwA-AJ-crx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="069-DC-AXV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="SQs-TT-T1g">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KMT-SE-by4" kind="relationship" relationship="rootViewController" id="qWo-Fq-pCH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1wC-s7-gUd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="119.84732824427481" y="3.5211267605633805"/>
+        </scene>
+        <!--Weather-->
+        <scene sceneID="P08-5R-H4w">
+            <objects>
+                <viewController id="KMT-SE-by4" customClass="CurrentWeatherCollectionVC" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y76-az-TIj">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search for a city" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kc8-j4-d0A">
+                                <rect key="frame" x="0.0" y="155" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="KMT-SE-by4" id="NAO-FC-lvy"/>
+                                </connections>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5Yr-aO-UA3">
+                                <rect key="frame" x="129" y="227" width="135" height="32"/>
+                                <segments>
+                                    <segment title="°C"/>
+                                    <segment title="°F"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onUnitChanged:" destination="KMT-SE-by4" eventType="valueChanged" id="kSr-oj-koa"/>
+                                </connections>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aed-5G-pdo">
+                                <rect key="frame" x="0.0" y="274" width="393" height="578"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eYh-jW-Zhi">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5dI-Bt-JcU">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jup-ee-3LT">
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="KMT-SE-by4" id="sXf-G0-50o"/>
+                                    <outlet property="delegate" destination="KMT-SE-by4" id="ykB-TI-fsv"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IyP-3L-Avl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aed-5G-pdo" firstAttribute="leading" secondItem="IyP-3L-Avl" secondAttribute="leading" id="YFp-Cl-WOm"/>
+                            <constraint firstItem="aed-5G-pdo" firstAttribute="top" secondItem="5Yr-aO-UA3" secondAttribute="bottom" constant="16" id="bYa-rd-mKK"/>
+                            <constraint firstAttribute="bottom" secondItem="aed-5G-pdo" secondAttribute="bottom" id="e2r-vx-xL8"/>
+                            <constraint firstItem="IyP-3L-Avl" firstAttribute="trailing" secondItem="5Yr-aO-UA3" secondAttribute="trailing" constant="129" id="fHD-EQ-34I"/>
+                            <constraint firstItem="aed-5G-pdo" firstAttribute="trailing" secondItem="IyP-3L-Avl" secondAttribute="trailing" id="fjR-4k-WJJ"/>
+                            <constraint firstItem="5Yr-aO-UA3" firstAttribute="top" secondItem="kc8-j4-d0A" secondAttribute="bottom" constant="16" id="jv4-hA-RWY"/>
+                            <constraint firstItem="kc8-j4-d0A" firstAttribute="top" secondItem="IyP-3L-Avl" secondAttribute="top" id="lXv-Gs-f10"/>
+                            <constraint firstItem="kc8-j4-d0A" firstAttribute="leading" secondItem="IyP-3L-Avl" secondAttribute="leading" id="lyb-WX-XeR"/>
+                            <constraint firstItem="kc8-j4-d0A" firstAttribute="trailing" secondItem="IyP-3L-Avl" secondAttribute="trailing" id="sv4-hC-EdX"/>
+                            <constraint firstItem="5Yr-aO-UA3" firstAttribute="leading" secondItem="IyP-3L-Avl" secondAttribute="leading" constant="129" id="xlL-CB-76w"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Weather" id="TgP-kE-0dR"/>
+                    <connections>
+                        <outlet property="citySearchBar" destination="kc8-j4-d0A" id="iYx-uo-mgs"/>
+                        <outlet property="collectionView" destination="aed-5G-pdo" id="hcQ-gr-goW"/>
+                        <outlet property="unitsControl" destination="5Yr-aO-UA3" id="gTc-E6-9Wk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xy8-S4-Kly" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1098" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
